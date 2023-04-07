@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Remove Customer</h2>
+    <p>Are you sure you want to remove {{ customer.name }}?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Yes</button>
+        <a href="{% url 'customer_details' %}">No</a>
+    </form>
+{% endblock %}

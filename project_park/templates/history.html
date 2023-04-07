@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>History</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Parking Slot</th>
+                <th>Occupied Time</th>
+                <th>Removed Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for h in history %}
+                <tr>
+                    <td>{{ h.name }}</td>
+                    <td>{{ h.contact }}</td>
+                    <td>{{ h.parking_slot.name }}</td>
+                    <td>{{ h.occupied_time }}</td>
+                    <td>{{ h.left_time }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No history found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

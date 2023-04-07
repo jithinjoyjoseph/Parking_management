@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Customer Details</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Parking Slot</th>
+                <th>Occupied Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.contact }}</td>
+                    <td>{{ customer.parking_slot.name }}</td>
+                    <td>{{ customer.occupied_time }}</td>
+                    <td><a href="{% url 'remove_customer' customer_id=customer.id %}">Remove</a></td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No customers found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Parking Slots</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for slot in slots %}
+                <tr>
+                    <td>{{ slot.name }}</td>
+                    {% if slot.is_available %}
+                        <td style="color: green;">Available</td>
+                        <td><a href="{% url 'add_customer' slot_id=slot.id %}">Add Customer</a></td>
+                    {% else %}
+                        <td style="color: red;">Occupied</td>
+                        <td></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

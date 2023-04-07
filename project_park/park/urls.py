@@ -1,17 +1,18 @@
-from django.contrib import admin
-from django.urls import path, include
 
-from .views import CustomLogin
+from django.urls import path
 from . import views
+from .views import CustomLogin, download_invoice
 from django.contrib.auth.views import LogoutView
-from . views import Slotlist,CustomerCreate,SlotUpdate,Customerlist
 
 urlpatterns = [
     path('index/',views.index,name='index'),
-    path('',CustomLogin.as_view(),name='login'),
+    path('login/',CustomLogin.as_view(),name='login'),
     path('logout/',LogoutView.as_view(next_page='login'),name='logout'),
-    path('slots/',Slotlist.as_view(),name='slots'),
-    path('customer',CustomerCreate.as_view(),name='customer'),
-    path('customerlist/',Customerlist.as_view(),name='customer-list'),
-    path('slotupdate/<int:pk>/', SlotUpdate.as_view(), name="slotupdate"),
+    path('', views.parking_slots, name='parking_slots'),
+    path('customer-details/', views.customer_details, name='customer_details'),
+    path('add-customer/<int:slot_id>/', views.add_customer, name='add_customer'),
+    path('remove-customer/<int:customer_id>/', views.remove_customer, name='remove_customer'),
+    path('history/', views.history, name='history'),
+    path('download-invoice/<int:customer_id>/', views.download_invoice, name='download_invoice'),
+
 ]
