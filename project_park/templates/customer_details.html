@@ -7,6 +7,8 @@
             <tr>
                 <th>Name</th>
                 <th>Contact</th>
+                <th>Vehicle</th>
+                <th>Registration No:</th>
                 <th>Parking Slot</th>
                 <th>Occupied Time</th>
                 <th>Action</th>
@@ -17,8 +19,11 @@
                 <tr>
                     <td>{{ customer.name }}</td>
                     <td>{{ customer.contact }}</td>
+                    <td>{{ customer.vehicle_name }}</td>
+                    <td>{{ customer.registration_no }}</td>
                     <td>{{ customer.parking_slot.name }}</td>
                     <td>{{ customer.occupied_time }}</td>
+
                     <td><a href="{% url 'remove_customer' customer_id=customer.id %}">Remove</a></td>
                 </tr>
             {% empty %}

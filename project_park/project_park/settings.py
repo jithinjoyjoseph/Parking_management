@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'project_park.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'parking_project',
+        'NAME': 'parking_project_1',
         'USER': 'root',
         'PASSWORD': '98b$ktwysbtwys&lj',
         'HOST': 'localhost',

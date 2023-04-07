@@ -53,7 +53,10 @@ def add_customer(request, slot_id):
         if form.is_valid():
             name = form.cleaned_data['name']
             contact = form.cleaned_data['contact']
-            customer = Customer(name=name, contact=contact, parking_slot=slot)
+            vehicle_name =form.cleaned_data['vehicle_name']
+            registration_no = form.cleaned_data['registration_no']
+            parking_fees = form.cleaned_data['parking_fees']
+            customer = Customer(name=name, contact=contact, parking_slot=slot,vehicle_name=vehicle_name,registration_no=registration_no,parking_fees=parking_fees)
             customer.save()
             slot.is_available = False
             slot.save()
@@ -72,7 +75,7 @@ def remove_customer(request, customer_id):
     customer.delete()
     slot.is_available = True
     slot.save()
-    history = History(name=customer.name, contact=customer.contact, parking_slot=customer.parking_slot.name, occupied_time=customer.occupied_time, left_time=datetime.now())
+    history = History(name=customer.name, contact=customer.contact, parking_slot=customer.parking_slot.name, vehicle_name=customer.vehicle_name,registration_no=customer.registration_no,occupied_time=customer.occupied_time, left_time=datetime.now())
     history.save()
     return redirect('customer_details')
 
