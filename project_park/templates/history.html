@@ -1,16 +1,33 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
+
+{% load static %}
+
+ 
 
 {% block content %}
-    <h2>History</h2>
-    <table>
+<style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    border-color: black;
+    border-width: 2px;
+}
+</style> 
+<div class="header-bar">
+    <a href="{% url 'index' %}">&#8592;Back</a>
+    <h2 style="padding-right:50vh;">Parking Records</h2>
+</div >
+
+<div class="card-body">
+    <table style="width: 100%;">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Contact</th>
-                <th>Vehicle</th>
-                <th>Registration No:</th>
-                <th>Occupied Time</th>
-                <th>Removed Time</th>
+                <th>NAME</th>
+                <th>CONTACT</th>
+                <th>VEHICLE</th>
+                <th>REGISTRATION No:</th>
+                <th>OCCUPIED TIME</th>
+                <th>REMOVED TIME</th>
             </tr>
         </thead>
         <tbody>
@@ -30,4 +47,5 @@
             {% endfor %}
         </tbody>
     </table>
+</div>
 {% endblock %}

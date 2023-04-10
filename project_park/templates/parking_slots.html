@@ -1,7 +1,32 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 
 {% block content %}
-    <h2>Parking Slots</h2>
+<style>
+    .slot-btn:hover{
+        cursor: pointer;
+    }
+</style>
+<div class="header-bar">
+    <a href="{% url 'index' %}">&#8592;Back</a>
+    <h2 style="margin-right:65vh;">slots</h2>
+</div>
+
+<div class="card-body">
+    <div class="col-lg-2">
+        {% for slot in slots %}
+        {% if slot.is_available %}
+		
+            <a href="{% url 'add_customer' slot_id=slot.id %}"><button class="slot-btn" style="width:3rem; height: 3rem;background-color:white; color:black; ">{{slot.name}}</button></a>
+			{% else %}
+        
+            <a><button class="slot-btn" href="#" style="width:3rem; height: 3rem;background-color: green;color: white;">{{slot.name}}</button></a>
+		
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+<!-- <h2>Parking Slots</h2>
 
     <table>
         <thead>
@@ -25,5 +50,4 @@
                 </tr>
             {% endfor %}
         </tbody>
-    </table>
-{% endblock %}
+    </table> -->

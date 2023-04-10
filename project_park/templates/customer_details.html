@@ -1,36 +1,60 @@
-{% extends 'base.html' %}
+
+
+
+{% extends 'main.html' %}
+
+{% load static %}
+
+ 
 
 {% block content %}
-    <h2>Customer Details</h2>
-    <table>
+<style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    border-color: black;
+    border-width: 2px;
+}
+a{
+    text-decoration: none;
+}
+</style> 
+<div class="header-bar">
+    <a href="{% url 'index' %}">&#8592;Back</a>
+    <h2 style="padding-right:50vh;">CUSTOMER DETAILS</h2>
+</div >
+
+<div class="card-body">
+    <table style="width: 100%;">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Contact</th>
-                <th>Vehicle</th>
-                <th>Registration No:</th>
-                <th>Parking Slot</th>
-                <th>Occupied Time</th>
-                <th>Action</th>
+                <th>NAME</th>
+                <th>CONTACT</th>
+                <th>VEHICLE</th>
+                <th>REGISTRATION No:</th>
+                <th>PARKED SLOTS</th>
+                <th>OCCUPIED TIME</th>
+                <th>ACTION</th>
             </tr>
         </thead>
         <tbody>
             {% for customer in customers %}
-                <tr>
-                    <td>{{ customer.name }}</td>
-                    <td>{{ customer.contact }}</td>
-                    <td>{{ customer.vehicle_name }}</td>
-                    <td>{{ customer.registration_no }}</td>
-                    <td>{{ customer.parking_slot.name }}</td>
-                    <td>{{ customer.occupied_time }}</td>
-
-                    <td><a href="{% url 'remove_customer' customer_id=customer.id %}">Remove</a></td>
-                </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="5">No customers found.</td>
-                </tr>
-            {% endfor %}
-        </tbody>
+            <tr>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.contact }}</td>
+                <td>{{ customer.vehicle_name }}</td>
+                <td>{{ customer.registration_no }}</td>
+                <td>{{ customer.parking_slot.name }}</td>
+                <td>{{ customer.occupied_time }}</td>
+                <td><a href="{% url 'remove_customer' customer_id=customer.id %}">Remove</a></td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="5">No customers found.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+                
     </table>
-{% endblock %}
+</div>
+{% endblock content %}

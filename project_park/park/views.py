@@ -25,6 +25,10 @@ def index(request):
     return render(request,'index.html')
 
 
+def Contact(request):
+    return render(request,'contact.html')
+
+
 class CustomLogin(LoginView):
     template_name = 'login.html'
     fields = '__all__'
