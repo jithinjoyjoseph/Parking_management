@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <title>Home</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        .header{
+            width: 100%;
+            height: 70vh;
+            background-image: url("{% static 'images/park15.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+            
+            
+        }
+        .navl{
+            height: 13vh;
+            background-color: rgb(0, 0, 0,0.3);
+            
+            
+        }
+        .navbar{
+            padding: 2rem;
+            word-spacing: 2rem;
+            
+            
+            
+        }
+        .navbar a{
+            color: white;
+            font-size: 19px;
+            text-decoration: none;
+            
+        }
+
+        .logout:hover{
+        background-color: rgb(60, 189, 240);
+        color: white;
+        cursor: pointer;
+        
+    }
+    .header .navbar a:hover{
+    color: rgb(60, 189, 240);
+    border-bottom: .1rem solid rgb(60, 189, 240);
+    padding-bottom: .5rem;
+    }
+    .home{
+        background-position: left;
+        
+        
+    }
+    .home .content h3{
+        font-size: 4.5rem;
+        color:whitesmoke;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-style: italic;
+        padding-left: 8rem;
+
+    }
+    .home .content p{
+        font-size: 1.5rem;
+    }
+    .home .content span{
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-weight: lighter;
+    }
+    .home .content img{
+        float: left;
+    }
+    section{
+    padding:2rem 7%;
+     
+}
+.footer {
+    max-height:9.5rem;
+    background-color: #eee;
+}
+.footer .bt{
+    float:right;
+    border-color: black;
+    background-color: rgb(43 122 253);
+    border-collapse: separate;
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+    margin-right: 40rem;
+    border-radius: 6px;
+    cursor: pointer;
+    height: 7.5rem;
+    width: 5rem;
+}
+.footer .p1{
+    float: right;
+    position: relative;
+    bottom: 10rem;
+    right: 28rem;
+    font-weight: bold;
+}
+.footer .p2{
+    float: right;
+    position: relative;
+    bottom: 8rem;
+    right: 17.3rem;
+    font-weight: bold;
+}
+.footer .b1{
+    float: right;
+    background-color:rgb(43 122 253) ;
+    color: black;
+    border-radius: 4px;
+    height: 45px;
+    width: 200px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    left: 250px;
+    bottom: 10rem;
+}
+.footer .b2{
+    background-color:rgb(43 122 253) ;
+    color: black;
+    border-radius: 4px;
+    height: 45px;
+    width: 200px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    left: 54rem;
+    bottom: 5.9rem;
+}
+.footer button:hover{
+    letter-spacing: 1.5px;
+    background-color:rgb(60, 189, 240);
+
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <header class="header" >
+        <div class="navl">
+            <nav class="navbar">
+                <a href="#">HOME</a>
+                <a href="#">ABOUT</a>
+                <!-- <a href=""><button class="btn-class" style="width: 40vh; margin-left: 5vh;font-size: larger;height: 5vh; text-align: center;">Parking Records</button></a> -->
+                <a href="{% url 'history' %}">PARKING-RECORDS</a>
+                <a href="#">CONTACTS</a>
+                
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'logout' %}"><button class="logout" style="float:right; text-decoration: none; font-size: larger;border-radius: 1vh;font-weight: bold;">LogOut</button></a>
+                {% else %}
+                {% endif %}
+            
+                
+            </nav>
+
+        </div>
+        
+        <section class="home" id="home" >
+
+            <div class="content">
+                <img src="{% static '/images/parklogo.jpg'%}" alt="" style="height:9rem;width: 9rem;padding-top: 2rem;">
+                <h3>Orion <br><span>CAR PARKING</span></h3>
+                
+            
+            </div>
+        </section>
+
+       
+
+        
+    </header>
+
+    <section class="footer" id="footer">
+        <img src="{% static '/images/parkplot.jpg' %}" style="width:20rem;height: 10rem;">
+        <button class="bt">P <sub style="size:.2rem;">1</sub></button>
+            <p class="p1">Maximum parking fees:50</p>
+            <p class="p2">Minimum parkig fees:25</p>
+            <a href="{% url 'parking_slots' %}"><button class="b1">Parking Slots</button></a>
+            <!-- <button class="b1">Parking Slots</button> -->
+            <a href="{% url 'customer_details' %}"><button class="b2" >Parked Vehicles</button></a>
+            <!-- <button class="b2">Parked Vehicles</button> -->
+    </section>
+    
+</body>
+</html>

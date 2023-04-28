@@ -1,16 +1,79 @@
-{% extends 'main.html' %}
-
+{% extends 'base.html' %}
+{% load static %}
 {% block content %}
+<style>
+    body{
+        background-image: url("{% static 'images/park14.jpg' %}");
+    }
+
+    .container{
+        max-width:350px;
+        height: 50vh;
+        margin-top: 10rem;
+        margin-left: 30rem;
+        background-image: url("{% static '/images/parklogo.jpg' %}");
+        box-shadow:2px 2px 13px -4px #000000;
+}
+.header-bar{
+            display:flex;
+           
+            justify-content:space-between;
+            color:#fff;
+            padding:10px;
+            border-radius:5px 5px 0 0;
+            background-color:#b7eff1 ;
+}
+.header-bar h2{
+    margin-left: 7rem;
+    font-weight: bold;
+}
+.card-body{
+                margin-left: 10vh;
+                padding-bottom: 10px;
+            }
+        input[type=text],
+         input[type=password],
+        <textarea{
+        border:1px solid #f86356;
+        border-radius:5px;
+        padding:10px;
+        width:90%;
+        height: 1rem;
+    }
+         label{
+            padding-top:10px !important;
+            display:block;
+            color:#017199 ;
+            border-color: #000000;
+            font-size: 25px;
+            font-weight: bold;
+         }
+         .button-search{
+            border:1px solid #017199;
+            background-color:#FAFAFA;
+            color:#1baadd ;
+            padding:10px;
+            font-size:14px;
+            border-radius:5px;
+            cursor:pointer;
+            text-decoration:none;
+
+            }
+            .button-search:hover{
+            background-color:#43beeb;
+            color:white;
+            }
+</style>
 
 <div class="header-bar">
-    <h2>LogIn</h2>
+    <h2>LOGIN</h2>
 </div>
 
 <div class="card-body">
     <form method="post">
     {% csrf_token %}
     {{form.as_p}}
-    <input class="button-search-login" type="submit" value="Login">
+    <input class="button-search" type="submit" value="Login">
 </form>
 
 </div>

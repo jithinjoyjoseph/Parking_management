@@ -21,10 +21,10 @@
 
     <style>
         body{
-            background-color: #eca012;
+            background-image: url("{% static '/images/park15.jpg' %}");
             background-size:cover;
-            font-family:font-family:'Alkatra', cursive;
-            padding-top:50px;
+            
+        
         }
         h1,h2,h3,h4,h5,h6{
         font-family:'Raleway',sans-serif;
@@ -35,7 +35,7 @@
 
         max-width:850px;
         margin:auto;
-        background-color:white;
+        background-color:rgb(0, 0, 0,0.3);
         box-shadow:2px 2px 13px -4px #000000;
         }
         a,p{
@@ -48,7 +48,7 @@
             color:#fff;
             padding:10px;
             border-radius:5px 5px 0 0;
-            background:linear-gradient(90deg,#f77251 0%,#f52e1c 43%,#f01b07 100%)
+            background:linear-gradient(90deg,#017199 0%,#1baadd 43%,#43beeb 100%)
         }
         .header-bar a{
           color:rgb(247,247,247);
@@ -71,6 +71,14 @@
          color:white;
          }
 
+         .card-body td,th,a{
+            color: white;
+         }
+         .card-body a:hover{
+            background-color: #f02d1b;
+            color: black;
+         }
+
 
          .delete-link:hover{
          color:red;}
@@ -80,7 +88,7 @@
             display:flex;
             align-items:center;
             justify-content:space-between;
-            background-top:1px solid rgb(226,226,226);
+            
           }
           .edit-link{
           float:right;
@@ -211,8 +219,14 @@
                 cursor: pointer;
                 
             }
+            .slot-btn-yes{
+                background-color:white; 
+                color:black;
+            }
             .slot-btn-yes:hover{
                 cursor: pointer;
+                background-color: rgb(249, 105, 105);
+                color: white;
             }
 
 

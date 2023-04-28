@@ -22,7 +22,7 @@ from django.contrib.auth.views import LoginView
 
 
 def index(request):
-    return render(request,'index.html')
+    return render(request,'index1.html')
 
 
 def Contact(request):

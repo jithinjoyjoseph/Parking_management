@@ -1,14 +1,12 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block content %}
 <style>
-    .slot-btn:hover{
-        cursor: pointer;
-    }
+    
 </style>
 <div class="header-bar">
     <a href="{% url 'index' %}">&#8592;Back</a>
-    <h2 style="margin-right:65vh;">slots</h2>
+    <h2 style="margin-right:65vh;">SLOTS</h2>
 </div>
 
 <div class="card-body">
@@ -16,10 +14,10 @@
         {% for slot in slots %}
         {% if slot.is_available %}
 		
-            <a href="{% url 'add_customer' slot_id=slot.id %}"><button class="slot-btn" style="width:3rem; height: 3rem;background-color:white; color:black; ">{{slot.name}}</button></a>
+            <a href="{% url 'add_customer' slot_id=slot.id %}"><button class="slot-btn-yes" style="width:3rem; height: 3rem; ">{{slot.name}}</button></a>
 			{% else %}
         
-            <a><button class="slot-btn" href="#" style="width:3rem; height: 3rem;background-color: green;color: white;">{{slot.name}}</button></a>
+            <a><button class="slot-btn-no" href="#" style="width:3rem; height: 3rem;background-color: green;color: white;">{{slot.name}}</button></a>
 		
         {% endif %}
         {% endfor %}
